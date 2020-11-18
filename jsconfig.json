@@ -9,6 +9,10 @@
             "@components/*": [
                 "./components/*",
                 "./components/"
+            ],
+            "@assets/*": [
+                "./assets/*",
+                "./assets/"
             ]
         }
     }
