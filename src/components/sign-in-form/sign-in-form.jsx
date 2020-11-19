@@ -2,7 +2,7 @@ import './sign-in-form.scss';
 import { Component } from 'react';
 import FormInput from '@components/form-input/form-input';
 import ZButton from '@components/z-button/z-button';
-
+import { signInWithGoogle } from '@fbase/firebase-utils.js';
 class SignInForm extends Component {
     constructor (props) {
         super(props);
@@ -34,7 +34,11 @@ class SignInForm extends Component {
                     <FormInput type='email' name='email' label='Email' value={this.state.email} handleChange={this.handleChangeData} required />
                     <FormInput type='password' label='Password' name='password' value={this.state.password} handleChange={this.handleChangeData} required />
 
-                    <ZButton type="submit" value="Submit Form" >Yalll</ZButton>
+                    <div className='buttons'>
+                        <ZButton type="submit" value="Submit Form" >Sign in</ZButton>
+                        <ZButton isGoogleSignIn onClick={signInWithGoogle} >Sign in with Google</ZButton>
+
+                    </div>
                 </form>
             </div>
         );

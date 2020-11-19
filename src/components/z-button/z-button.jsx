@@ -1,9 +1,10 @@
 import './z-button.scss';
 
 
-const ZButton = ({ children, ...otherProps }) => {
+const ZButton = ({ children, isGoogleSignIn, ...otherProps }) => {
+    const classNameGoogle = isGoogleSignIn ? 'google-sign-in' : '';
     return (
-        <button className='z-button' {...otherProps}>
+        <button className={`${classNameGoogle} z-button`} {...otherProps}>
             {children}
         </button>
     );
