@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "cra-alias": "^4.13.19"
+    "cra-alias": "^4.13.19",
+    "fetch": "^1.1.0"
   }
 }

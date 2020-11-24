@@ -6,7 +6,7 @@ import SigninLoginPage from '@pages/signin-login-page/signin-login-page';
 import Header from '@components/header/header';
 import { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { auth } from '@fbase/firebase-utils.js';
+import { auth, createUserProfileDocument } from '@fbase/firebase-utils.js';
 // import { Route } from 'react-router-dom';
 
 
@@ -23,9 +23,21 @@ class App extends Component {
 
 
     componentDidMount () {
-        this.unsubsribeFromAuth = auth.onAuthStateChanged(user => {
-            this.setState({ currentUser: user });
-            console.log(user);
+        this.unsubsribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+            this.setState({ currentUser: null });
+
+            if (userAuth) {
+                const userRef = await createUserProfileDocument(userAuth, {});
+                userRef.onSnapshot(snapShot => {
+                    this.setState({
+                        currentUser: {
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        }
+                    });
+                    console.log(this.state);
+                });
+            }
         });
     }
     componentWillUnmount () {
