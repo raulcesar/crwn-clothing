@@ -14,6 +14,10 @@
                 "./assets/*",
                 "./assets/"
             ],
+            "@redux/*": [
+                "./redux/*",
+                "./redux/"
+            ],
             "@fbase/*": [
                 "./firebase/*",
                 "./firebase/"

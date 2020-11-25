@@ -19,4 +19,13 @@ const maxProduct = (data) => {
     return a * b;
 };
 
-maxProduct([4, 5, 6, 7]);
+const sum = (a=0, b=0, c=0) => {
+    return a + b + c;
+};
+
+// maxProduct([4, 5, 6, 7]);
+const arr = [];
+const o = { ...arr };
+
+console.log(sum(...arr));
+
