@@ -1,14 +1,18 @@
 import './App.css';
 // import './Home';
 import { connect } from 'react-redux';
+import { Component } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import HomePage from '@pages/home/Home';
 import ShopPage from '@pages/shopPage/shopPage';
 import SigninLoginPage from '@pages/signin-login-page/signin-login-page';
+import CheckoutPage from '@pages/checkout-page/checkout-page';
+
 import Header from '@components/header/header';
-import { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+
 import { auth, createUserProfileDocument } from '@fbase/firebase-utils.js';
+
 // import { Route } from 'react-router-dom';
 import { setCurrentUser } from '@redux/user/user.actions';
 import { selectCurrentUser } from '@redux/user/user.selectors';
@@ -54,6 +58,8 @@ class App extends Component {
                     <Route exact path='/signinlogin'
                         render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SigninLoginPage />)}
                     />
+                    <Route exact path='/checkout' component={CheckoutPage} />
+
 
 
                 </Switch>

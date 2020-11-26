@@ -4,28 +4,32 @@ import CartItem from '@components/cart-item/cart-item';
 import { connect } from 'react-redux';
 import { selectCartItems } from '@redux/cart/cart.selectors';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
+import { toggleCartHidden } from '@redux/cart/cart.actions';
 
-// import { ReactComponent as ShoppngCartIcon } from '@assets/shopping-bag.svg';
+const CartDropDown = ({ cartItems, history, dispatch }) => {
 
-const CartDropDown = ({ cartItems }) => {
     return (
         <div className='cart-dropdown'>
             <div className='cart-items'>
                 {
-                    cartItems.map(cartItem => <CartItem key={cartItem.id} item={cartItem} />)
+                    cartItems.length ?
+                        cartItems.map(cartItem => <CartItem key={cartItem.id} item={cartItem} />)
+                        :
+                        <span className='empty-message'>buy some stuff</span>
                 }
             </div>
-            <ZButton>Checkout</ZButton>
 
+
+            <ZButton onClick={() => {
+                dispatch(toggleCartHidden());
+                history.push('/checkout');
+
+            }}>Checkout</ZButton>
         </div>
     );
 };
 const mapStateToProps = createStructuredSelector({ cartItems: selectCartItems });
 
-// const mapDispatchToProps = dispatch => ({
-//     toggleCartHidden: () => dispatch(toggleCartHidden())
-// });
-
-export default connect(mapStateToProps)(CartDropDown);
-
-// export default CartDropDown;
+// export default withRouter(connect(mapStateToProps)(CartDropDown));
+export default connect(mapStateToProps)(withRouter(CartDropDown));
