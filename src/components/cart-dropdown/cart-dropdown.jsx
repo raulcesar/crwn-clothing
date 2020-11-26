@@ -3,6 +3,7 @@ import ZButton from '@components/z-button/z-button';
 import CartItem from '@components/cart-item/cart-item';
 import { connect } from 'react-redux';
 import { selectCartItems } from '@redux/cart/cart.selectors';
+import { createStructuredSelector } from 'reselect';
 
 // import { ReactComponent as ShoppngCartIcon } from '@assets/shopping-bag.svg';
 
@@ -19,9 +20,7 @@ const CartDropDown = ({ cartItems }) => {
         </div>
     );
 };
-const mapStateToProps = (state) => {
-    return {cartItems: selectCartItems(state)};
-};
+const mapStateToProps = createStructuredSelector({ cartItems: selectCartItems });
 
 // const mapDispatchToProps = dispatch => ({
 //     toggleCartHidden: () => dispatch(toggleCartHidden())

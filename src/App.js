@@ -11,7 +11,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { auth, createUserProfileDocument } from '@fbase/firebase-utils.js';
 // import { Route } from 'react-router-dom';
 import { setCurrentUser } from '@redux/user/user.actions';
-
+import { selectCurrentUser } from '@redux/user/user.selectors';
+import { createStructuredSelector } from 'reselect';
 
 class App extends Component {
     constructor () {
@@ -61,10 +62,7 @@ class App extends Component {
         );
     }
 }
-const mapStateToProps = ({ userReducer }) => (
-    {
-        currentUser: userReducer.currentUser
-    });
+const mapStateToProps = createStructuredSelector({ currentUser: selectCurrentUser });
 
 const mapDispatchToProps = dispatch => ({
     setCurrentUser: user => dispatch(setCurrentUser(user))
