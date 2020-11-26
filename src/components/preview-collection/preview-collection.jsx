@@ -11,13 +11,13 @@ const PreviewCollection = ({ title, items }) => {
             <div className='preview'>
                 {
                     items
-                    .filter((item, idx) => idx < 4)
-                    .map((item) => {
-                        // const toPass = {id, ...allPrpos};
-                        return (
-                            <CollectionItem key={item.id} {...item} />
-                        );
-                    })
+                        .filter((item, idx) => idx < 4)
+                        .map((item) => {
+                            // const toPass = {id, ...allPrpos};
+                            return (
+                                <CollectionItem key={item.id} item={item} />
+                            );
+                        })
                 };
         </div>
         </div>
