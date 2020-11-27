@@ -1,11 +1,7 @@
 import './checkout-item.scss';
-// // import ZButton from '@components/z-button/z-button';
-// // import CartItem from '@components/cart-item/cart-item';
 import { connect } from 'react-redux';
 import { clearItemFromCart, removeItem, addItem } from '@redux/cart/cart.actions';
 
-// import { selectCartItems, selectCartTotal } from '@redux/cart/cart.selectors';
-// import { createStructuredSelector } from 'reselect';
 
 const CheckoutItem = ({ cartItem, clearItem, remove, add }) => {
     const { name, imageUrl, price, quantity } = cartItem;
@@ -27,10 +23,7 @@ const CheckoutItem = ({ cartItem, clearItem, remove, add }) => {
         </div>
     );
 };
-// const mapStateToProps = createStructuredSelector({
-//     cartItems: selectCartItems,
-//     total: selectCartTotal
-// });
+
 const mapDispatchToProps = dispatch => ({
     clearItem: item => dispatch(clearItemFromCart(item)),
     remove: item => dispatch(removeItem(item)),
