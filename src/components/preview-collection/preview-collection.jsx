@@ -19,7 +19,7 @@ const PreviewCollection = ({ title, items }) => {
                             );
                         })
                 };
-        </div>
+            </div>
         </div>
     );
 };

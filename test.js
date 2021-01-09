@@ -19,13 +19,46 @@ const maxProduct = (data) => {
     return a * b;
 };
 
-const sum = (a=0, b=0, c=0) => {
+const sum = (a = 0, b = 0, c = 0) => {
     return a + b + c;
 };
 
 // maxProduct([4, 5, 6, 7]);
-const arr = [];
-const o = { ...arr };
+const arrayOfStuff = [
+    {
+        id: 3,
+        title: 'Jackets',
+        routeName: 'jackets',
+        items: [
+            {
+                id: 18,
+                name: 'Black Jean Shearling',
+                imageUrl: 'https://i.ibb.co/XzcwL5s/black-shearling.png',
+                price: 125
+            }
+        ]
+    },
+    {
+        id: 4,
+        title: 'Womens',
+        routeName: 'womens',
+        items: [
+            {
+                id: 23,
+                name: 'Blue Tanktop',
+                imageUrl: 'https://i.ibb.co/7CQVJNm/blue-tank.png',
+                price: 25
+            }
+        ]
+    }
+];
+const SHOP_DATA = {};
+for (const dataObj of  arrayOfStuff) {
+    const key = dataObj.title.toLowerCase();
+    SHOP_DATA[key] = dataObj;
+}
 
-console.log(sum(...arr));
+
+
+console.log(SHOP_DATA);
 

@@ -1,4 +1,4 @@
-const SHOP_DATA = [
+const shopDataArray = [
     {
         id: 1,
         title: 'Hats',
@@ -245,5 +245,10 @@ const SHOP_DATA = [
         ]
     }
 ];
+const SHOP_DATA = {};
+for (const dataObj of  shopDataArray) {
+    const key = dataObj.title.toLowerCase();
+    SHOP_DATA[key] = dataObj;
+}
 
 export default SHOP_DATA;
