@@ -7,6 +7,15 @@ export const selectCollections = createSelector(
     shopReducer => shopReducer.collections
 );
 
+export const selectCollectionsForPreview = createSelector(
+    [selectCollections],
+    collections => Object.values(collections)
+    // collections => {
+    //     const ret = Object.values(collections);
+    //     return ret;
+    // }
+);
+
 export const selectSpecificCollection = collectionIdName => {
     return createSelector(
         [selectCollections],
